@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>内積画像変換サイト！ (JS版)</title>
+  <script async 
+        src="https://docs.opencv.org/4.7.0/opencv.js"
+        onload="cv['onRuntimeInitialized'] = onOpenCvReady">
+  </script>
+
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    label { display: block; margin: 8px 0; }
+    #canvasOutput { border: 1px solid #ccc; margin-top: 12px; }
+    .btn { margin-right: 8px; }
+  </style>
+</head>
+<body>
+  <h1>内積画像変換サイト！ </h1>
+
+  <label>
+    画像を選択：
+    <input type="file" id="fileInput" accept="image/*">
+  </label>
+
+  <label>
+    ρ (内積／p)：<input type="text" id="rhoInput" placeholder="必須" size="6">
+    |v|：<input type="text" id="magVInput" size="4">
+    |w|：<input type="text" id="magWInput" size="4">
+    θ (°)：<input type="text" id="thetaInput" size="4">
+  </label>
+
+  <button id="fillBtn" class="btn" disabled>補完</button>
+  <button id="runBtn" class="btn" disabled>変換してプレビュー＆保存</button>
+
+  <canvas id="canvasOutput"></canvas>
+
+  <p>
+    <a id="downloadLink" style="display:none" download="warp.png">
+      変換結果をダウンロード
+    </a>
+  </p>
+
+  <script src="script.js"></script>
+</body>
+</html>
